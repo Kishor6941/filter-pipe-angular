@@ -1,0 +1,36 @@
+
+<div class="container">
+<!-- <div class="col-md-8"> -->
+  <div class="row">
+  <div class="form-group col-md-6">
+    <label for="search">Search Product By Name</label>
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="nameSearch">
+  </div>
+<!-- </div> -->
+
+  <div class="col-md-6">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">id</th>
+          <th class="" (click)="sort('name')" scope="col"><i class="fa fa-sort"></i> Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor = "let product of productArr | filter:nameSearch">
+          <tr>
+            <th scope="row"> {{product.sno}} </th>
+            <td> {{product.name}} </td>
+            <td> {{product.price}} </td>
+            <td *ngIf="product.availability">Availabile</td>
+            <td *ngIf="!product.availability"> Not Availabile </td>
+          </tr>
+        </ng-container>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
